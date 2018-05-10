@@ -41,16 +41,51 @@ using System.Text;
                 OnPropertyChanged("Pais");
             }
         }
+        public decimal Saldo
+        {
+            get
+            {
+                return saldo;
+            }
+            set
+            {
+                if (saldo == value)
+                {
+                    return;
+                }
+                saldo = value;
+                OnPropertyChanged("Saldo");
+            }
+        }
+        public DateTime FechaNacimiento
+        {
+            get
+            {
+                return fechaNacimiento;
+            }
+            set
+            {
+                if (fechaNacimiento == value)
+                {
+                    return;
+                }
+                fechaNacimiento = value;
+                OnPropertyChanged("FechaNacimiento");
+            }
+        }
         #endregion
 
         #region Atributos
         private string nombre;
         private string pais;
+        private decimal saldo;
+        private DateTime fechaNacimiento;
         #endregion
+
         #region Metodos
         public override string ToString()
         {
-            return $"{Nombre} | {Pais}";
+            return $"{Nombre} | {Pais} | {Saldo} | {FechaNacimiento}";
         }
         #endregion
 
