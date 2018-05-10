@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace DataBinding
+{
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class ListPage : ContentPage
+	{
+        public List<Page> Paginas
+        { get; set; }
+
+        public ListPage ()
+		{
+			InitializeComponent ();
+            Paginas = new List<Page>()
+            {
+                new BindingList(),
+                new MainPage()
+            };
+            this.BindingContext = this;
+            lstVista.ItemSelected += LstVista_ItemSelected;
+		}
+
+        private void LstVista_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null)
+            {
+                this.Navigation.PushAsync((Page)e.SelectedItem);
+            }
+            lstVista.SelectedItem = null;
+        }
+    }
+}
